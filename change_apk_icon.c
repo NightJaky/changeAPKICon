@@ -7,6 +7,7 @@
 #include <string.h>
 
 #define SHELL_COMMAND_LENGTH		1024
+static char* unzip_temp_path_name	"unziptemp";
 
 enum CUSTOM_FILE_TYPE
 {
@@ -51,7 +52,7 @@ int check_arg(char* argc, enum CUSTOM_FILE_TYPE type)
 
 int unzip_apk(char* apk_path_name)
 {
-
+	
 }
 
 int main(int argc, char** argv)
