@@ -5,9 +5,10 @@
 #include <unistd.h>
 #include <errno.h>
 #include <string.h>
+#include <fcntl.h>
 
 #define SHELL_COMMAND_LENGTH		1024
-static char* unzip_temp_path_name	"unziptemp";
+static char* unzip_temp_path_name =	"unziptemp";
 
 enum CUSTOM_FILE_TYPE
 {
@@ -61,7 +62,7 @@ int main(int argc, char** argv)
 	FILE* fp = NULL;
 	char buffer[20] = {0};
 	char buff_shell[SHELL_COMMAND_LENGTH] = {0};
-
+	
 	if (argc != 3)
 	{
 		fprintf(stderr, "argc must be 3.\n");
