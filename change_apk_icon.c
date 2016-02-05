@@ -56,6 +56,21 @@ int unzip_apk(char* apk_path_name)
 	
 }
 
+int check_file_is_exists(char* file_path)
+{
+	if (!strncpy(file_path, "/", 1)) {
+		if (!access(file_path)) {
+			return 0;
+		}
+	}
+
+	return -1;
+}
+
+
+
+
+
 int main(int argc, char** argv)
 {
 	int iret = -1;
@@ -69,15 +84,25 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
+	if (check_file_is_exists(argv[1])) {
+		fprintf(stderr, "dest file 1 \"%s\" not found or not a full path\n", argv[1]);
+		return -1;
+	}
+
+	if (check_file_is_exists(argv[2])) {
+		fprintf(stderr, "dest file 2 \"%s\" not found or not a full path\n", argv[2]);
+		return -1;
+	}
+
+
 	if (!check_arg(argv[1], TYPE_FILE))
 	{
 		if (!check_arg(argv[2], TYPE_DIR))
 		{
-			printf("start to unzip file\n");
+			printf("start to unzip file\n");			
 
-			
-
-			fp = popen("ls -l", "r");
+			//fp = popen("ls -l", "r");
+			fp = popen("");
 			if (!fp)
 			{
 				fprintf(stderr, "popen failed, errno=%d, strerror(errno)=%s\n", errno, strerror(errno));
